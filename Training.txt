@@ -1,0 +1,280 @@
+1. Ctrl Shift T => Reopen closed tab
+2. Snipping tool => Screenshot of specific area
+3. Ctrl Shift R => Clear the cache
+4. 
+
+
+Include Script tag in body section.
+If it is in head, if by any chance some script blocks, all page gets blocks.
+
+require.js used for lazy loading 
+load file only when required
+
+4 types of data types in js
+
+number
+string
+boolean
+undefined
+
+Object:
+=> a key value pair
+
+function
+
+Var is a keyword and not a data type
+
+Browser  about:blank
+(to get js debugger)
+
+var a ={}
+//{ } => obj literal
+eg var obj={a:1,"bcd}  //a is a key 
+
+Math Object
+eg:
+Math.abs(x)
+Math.ceil(x)
+
+String Object
+eg:
+charAt(index)
+concat( string)
+combine string using + is memory heavy
+
+
+Array
+var a = [1,2,3]
+a[0]
+
+
+typeof a 
+"object"
+
+a.length
+
+var b=["a","b","c"]
+b.join('<')
+"abc"
+
+a.filter( function(item) { if (item == 'something
+	return true;
+}
+	}
+	)
+
+
+s.map(function(item) { return 'q'})
+
+Functions
+---------------
+functions are objects
+have properties
+have methods
+
+invokable functions
+we can create instance of function. sililar to creating instance of class in c#, java
+
+function declaration and function expression
+expression => anonymous function to a var. Even named function can be assigned to a value
+
+function can return another function
+
+var s = function (a){
+return a};
+
+var s = function x(){
+return true}
+
+
+if return is empty in function
+if function is invoked using new keyword this will be returned
+else
+ null will be returned
+
+
+var s = new Function('var a=32; return a;')
+full function in a single line
+var s = new Function('a','b' 'return a+b')
+the last line act as function body
+first lines as argumnts
+
+a={
+name:'test',
+say: function(){
+console.log('hello'+this.name);
+}
+}
+b={name:'outside'}
+
+a.say.call(b);
+a.say.apply(a,b) //can pass 2 arguments 1-object 2-array => similar to main(int argc,char[] argv)
+
+Scope in javascript is function level
+*******Global object is Window*****
+
+any variable defined outside functon will be global and is in scope of window object
+
+var a=19
+window.a
+19
+
+call and apply are used to invoke scope level functions
+
+$ in jquery is a function
+
+similarly function defined should be loosly coupled
+
+Dec 04
+------
+
+Prototype
+---------
+
+can manipulate properties of an obj even at runtime
+prototype is also an object
+
+dynamically add functions to obj
+
+Can be overwritten
+prototype properties can be overwritten so is existing properties , using prototype
+
+can also be used to add/modify functions also.
+eg : add check palindrome func to a String function
+
+obj.prototype.isPrototypeOf(); //check for iS a prototype
+
+__proto__
+proto ref to parent object
+Not directly exposed to browser window
+No __proto__ for 'Object'
+
+proto chain
+
+if property is not defined return value is undefined
+
+Inheritence
+-----------
+Achieved using prototype
+Eg: 
+dad = function(){this.family = 'abc'};
+kid=function(){this.name='wer'}
+
+kid.prototype=new dad();
+
+console.dir(kid)
+abc=new kid();
+kid {name: "wer"}
+
+base class inherited from parent class have constructr of base class
+we can change the constructr of inherited object. Even id the constructr is changed the inherited properties will not change
+
+Class
+-----
+
+No class available in JS
+object is derived from object
+even function is object
+
+we can assign proto of one obj to another obj
+a.prototype= a.prototype
+here a = b
+
+function inherit(c,p)
+{
+		var F= function(){};
+		F.prototype=p.prototype;
+		c.prototype=new F()
+}
+
+inherit(kid,dad);
+
+only prototype properties are inherited in case of assiging one obj to another.
+If a new obj is created using new key word everything is inherited.
+
+if number is added as property of an obj then we need to use []
+
+dad['value']=32 //add 'value' as a property to dad
+
+scope
+------
+if a variable is defined not usinf var then the value will be considerd as global variable.
+if it is done using var scope is terminated when function stops execution
+
+Self Executable function
+-------------------------
+
+(function()
+{
+	var a=1;
+	alert (a+a);
+})();   // the function get automatically executed.
+
+This is a security principle by which variable access is prevented for external users
+
+
+Closure
+-------
+def: Ability of a function to access its scope and variables, even it is called from an external scope of the function.
+
+
+The life time of a var 
+can be extended when a var is used by an inner function
+
+eg: 
+var inner;
+function a()
+{
+	var i=1;
+	inner = function() {
+		i++;
+	}
+}
+
+The var i exist even after exec of a() 
+
+
+Hoising
+-------
+
+(function(){
+console.log(add(1,2));
+function add(x,y){ return x+y;}
+
+})()
+
+(function(){
+console.log(add(1,2));
+var add= function (x,y){ return x+y;}
+
+})()
+// error add is not defined
+
+whenever a function is defined it is moved up in the function or hoisted.
+if functio is used as expression it is not hoisted.
+
+Similarly we can hoist variables also.
+
+use strict
+-----------
+
+if var is defined not using var 
+then we may use 'use strict' so it behaves strictly
+
+Debugging
+---------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
